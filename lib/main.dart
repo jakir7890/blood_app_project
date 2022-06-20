@@ -1,6 +1,10 @@
 import 'package:blood_app/screen/forget_password.dart';
+import 'package:blood_app/screen/loginpage.dart';
+import 'package:blood_app/screen/signuppage.dart';
+import 'package:blood_app/screen/splashscreen.dart';
 import 'package:blood_app/screen/user_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,14 +15,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: UserScreen(),
+      // home: UserScreen(),
+      initialRoute: '/',
+       getPages: [
+    GetPage(name: '/', page: () => Splashscreen()),
+    GetPage(name: '/', page: () => UserScreen()),
+
+    GetPage(name: '/', page: () => SignIn()),
+    GetPage(name: '/', page: () => SignUp()),
+    GetPage(name: '/', page: () => ForgetPassScreen()),
+  ]
+      
     );
   }
 }
