@@ -20,6 +20,7 @@ class _SignUpState extends State<SignUp> {
   List listGroup = [
     "A +","A -","B +","B -","AB +","AB -",
   ];
+   var _isVisible = false;
  
  
   @override
@@ -75,38 +76,50 @@ class _SignUpState extends State<SignUp> {
                  children: [
                    Padding(
           padding:  EdgeInsets.only(left: 25),
-          child: Text('Password',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+          child: Text('Password',style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
         ),
         SizedBox(height: 10,),
                    Container(
-                      margin: EdgeInsets.only(left: 20,right: 20),
-                      child: TextField(
-                          
-                          keyboardType: TextInputType.text,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                       
-                            hintStyle: TextStyle(
-                               fontSize: 12,fontWeight: FontWeight.bold),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                  width: 1,
-                                  style: BorderStyle.solid,
-                                  color: Colors.blue),
+                    margin: EdgeInsets.only(left: 18,right: 18),
+                    child: TextField(
+                        
+                        // keyboardType: TextInputType.text,
+                        obscureText: _isVisible?false: true,
+                        decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                               setState(() {
+                          _isVisible = !_isVisible;
+                        });
+                            },
+                            icon: Icon(
+                              _isVisible?Icons.visibility:
+                              Icons.visibility_off,
+                              color: Colors.grey,)
                             ),
-                            filled: true,
-                            fillColor: Colors.white,
-                            contentPadding: EdgeInsets.all(12),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                  width: 1,
-                                  style: BorderStyle.solid,
-                                  color: Colors.grey),
-                            ),
-                          )),
-            ),
+                         
+                     
+                          hintStyle: TextStyle(
+                             fontSize: 12,fontWeight: FontWeight.bold),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1,
+                                style: BorderStyle.solid,
+                                color: Colors.blue),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: EdgeInsets.all(12),
+                          enabledBorder: OutlineInputBorder(
+                             borderRadius: BorderRadius.circular(10),
+                           
+                            borderSide: BorderSide(
+                                width: 1,
+                                style: BorderStyle.solid,
+                                color: Colors.grey),
+                          ),
+                        )),
+              ),
                  ],
                ),
               SizedBox(height: 10,),
@@ -116,14 +129,14 @@ class _SignUpState extends State<SignUp> {
           padding:  EdgeInsets.only(left: 25),
           child: Text('Select Area',style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
         ),
-        SizedBox(height: 10,),
+        // SizedBox(height: 5,),
           Padding(
             padding:  EdgeInsets.all(16.0),
             child: Container(
               padding: EdgeInsets.only(left: 16,right: 16),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey,width: 1),
-                borderRadius: BorderRadius.circular(15)
+                borderRadius: BorderRadius.circular(10)
               ),
               child: DropdownButton(
                
@@ -156,7 +169,7 @@ class _SignUpState extends State<SignUp> {
                 ],
               ),
 
-              SizedBox(height: 10,),
+              // SizedBox(height: 5,),
               
               Column(crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -164,7 +177,7 @@ class _SignUpState extends State<SignUp> {
           padding:  EdgeInsets.only(left: 25),
           child: Text('Blood Group',style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
         ),
-        SizedBox(height: 10,),
+        // SizedBox(height: 5,),
         Padding(
             padding:  EdgeInsets.all(16.0),
             child: Container(
@@ -203,7 +216,7 @@ class _SignUpState extends State<SignUp> {
                   
                 ],
               ),
-              SizedBox(height: 10,),
+              // SizedBox(height: 10,),
                TextFieldView(
                 title: 'Current Upazila',
               ),

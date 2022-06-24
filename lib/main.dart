@@ -1,8 +1,11 @@
 import 'package:blood_app/screen/forget_password.dart';
+import 'package:blood_app/screen/homapage.dart';
 import 'package:blood_app/screen/loginpage.dart';
+import 'package:blood_app/screen/profilepage.dart';
 import 'package:blood_app/screen/signuppage.dart';
 import 'package:blood_app/screen/splashscreen.dart';
 import 'package:blood_app/screen/user_screen.dart';
+import 'package:blood_app/widget/custromdrowe.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,6 +30,9 @@ class MyApp extends StatelessWidget {
        getPages: [
     GetPage(name: '/', page: () => Splashscreen()),
     GetPage(name: '/', page: () => UserScreen()),
+    GetPage(name: '/', page: () => Homepage()),
+    GetPage(name: '/', page: () => ProfilePage()),
+    GetPage(name: '/', page: () => CustromDrower()),
 
     GetPage(name: '/', page: () => SignIn()),
     GetPage(name: '/', page: () => SignUp()),
