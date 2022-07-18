@@ -1,5 +1,9 @@
+import 'package:blood_app/screen/homapage.dart';
+import 'package:blood_app/screen/loginpage.dart';
 import 'package:blood_app/screen/user_screen.dart';
 import 'package:blood_app/widget/custromtextfield.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +25,14 @@ class _SignUpState extends State<SignUp> {
     "A +","A -","B +","B -","AB +","AB -",
   ];
    var _isVisible = false;
- 
+    TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
+  TextEditingController _currentUpazelaController = TextEditingController();
+  TextEditingController _selectareaController = TextEditingController();
+  TextEditingController _bloodgroupController = TextEditingController();
+   FirebaseAuth auth = FirebaseAuth.instance;
  
   @override
   Widget build(BuildContext context) {
@@ -59,16 +70,61 @@ class _SignUpState extends State<SignUp> {
               SizedBox(height: 20,),
               
       
-              TextFieldView(
-                title: 'Name',
+              Column(
+                children: [
+                  TextFieldView(
+                    controller: _nameController,
+                    title: 'Name',
+                  ),
+                ],
               ),
               SizedBox(height: 10,),
-                TextFieldView(
-                title: 'Email Address',
+               Column(crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                   Padding(
+            padding:  EdgeInsets.only(left: 25),
+            child: Text('Email',style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
+          ),
+          SizedBox(height: 10,),
+                  Container(
+                    margin: EdgeInsets.only(left: 20,right: 20),
+                    child: TextField(
+                         controller: _emailController,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                         
+                          hintStyle: TextStyle(
+                            fontSize: 12,fontWeight: FontWeight.bold
+                              ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(
+                                width: 1,
+                                style: BorderStyle.solid,
+                                color: Colors.blue),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: EdgeInsets.all(12),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(
+                                width: 1,
+                                style: BorderStyle.solid,
+                                color: Colors.grey),
+                          ),
+                        )),
+                  ),
+                ],
               ),
+              //   TextFieldView(
+              //   title: 'Email Address',
+              // ),
               SizedBox(height: 10,),
                 TextFieldView(
+                  controller: _phoneController,
                 title: 'Phone Number',
+                
               ),
               SizedBox(height: 10,),
              
@@ -82,6 +138,7 @@ class _SignUpState extends State<SignUp> {
                    Container(
                     margin: EdgeInsets.only(left: 18,right: 18),
                     child: TextField(
+                       controller: _passwordController,
                         
                         // keyboardType: TextInputType.text,
                         obscureText: _isVisible?false: true,
@@ -143,7 +200,7 @@ class _SignUpState extends State<SignUp> {
                 icon: Icon(Icons.arrow_drop_down),
                 underline: SizedBox(),
                 style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 15,fontWeight: FontWeight.bold,
                   color: Colors.black
                 ),
                 iconSize: 30,
@@ -191,7 +248,7 @@ class _SignUpState extends State<SignUp> {
                 icon: Icon(Icons.arrow_drop_down),
                 underline: SizedBox(),
                 style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 15,fontWeight: FontWeight.bold,
                   color: Colors.black
                 ),
                 iconSize: 30,
@@ -218,6 +275,7 @@ class _SignUpState extends State<SignUp> {
               ),
               // SizedBox(height: 10,),
                TextFieldView(
+                controller: _currentUpazelaController,
                 title: 'Current Upazila',
               ),
 
@@ -228,8 +286,31 @@ class _SignUpState extends State<SignUp> {
                 
                 padding: EdgeInsets.only(left: 20,right: 20),
                 child: ElevatedButton(
-                  onPressed: () {
-                  
+                  onPressed: ()
+                  async 
+                  {
+                    final user= User(
+                      name: _nameController.text,
+                      phonenumber: int.parse(_phoneController.text),
+                      currentupozila: _currentUpazelaController.text,
+                      selectarea: _selectareaController.text,
+                      bloodgroup: _bloodgroupController.text
+                    );
+                    createUser(user);
+                     Get.to(Homepage());
+                  try{
+                            final users= await   auth.createUserWithEmailAndPassword(
+                              email: _emailController.text, 
+                              password: _passwordController.text.toString().trim(),
+                              
+                              );
+                              if(users!=null){
+                                Get.to(Homepage());
+
+                              }
+                            }on FirebaseAuthException catch (e){
+                              print(e.code);
+                            };
                   },
                     style: ElevatedButton.styleFrom(
             primary: Color(0xFF660000),
@@ -251,7 +332,37 @@ class _SignUpState extends State<SignUp> {
                     )
                   ),
               ),
-              SizedBox(height: 20,)
+              SizedBox(height: 20,),
+               Padding(
+                 padding:  EdgeInsets.only(left: 30,right: 30),
+                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                 children: [
+                                   Text(
+                                     "Don't have an account?",
+                                     style: TextStyle(
+                                       fontSize: 15.0,
+                                       fontWeight: FontWeight.w600,
+                                       color: Colors.red,
+                                     ),
+                                   ),
+                                   SizedBox(width: 20,),
+                                   GestureDetector(
+                                     child: Text(
+                                       " Sign In",
+                                       style: TextStyle(
+                                         fontSize: 20.0,
+                                         fontWeight: FontWeight.w600,
+                                         color: Colors.green,
+                                       ),
+                                     ),
+                                     onTap: () {
+                                       Get.to(SignIn());
+                                     },
+                                   )
+                                 ],
+                               ),
+               ),
+                             SizedBox(height: 20,),
             
             
           ],
@@ -260,3 +371,37 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
+
+
+Future createUser(User user) async {
+  final docUser = FirebaseFirestore.instance.collection('users').doc();
+  user.id = docUser.id;
+  final json = user.toJson();
+  await docUser.set(json);
+}
+
+class User{
+  String id, name,
+  selectarea,bloodgroup, 
+  currentupozila;
+  int phonenumber;
+
+  User(
+    {this.id = '',
+    required this.name,
+    required this.selectarea,
+    required this.bloodgroup, 
+    required this.currentupozila,
+    required this.phonenumber}
+  );
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'name': name,
+    // 'selectarea': selectarea,
+    // 'bloodgroup': bloodgroup,
+    'currentupozila': currentupozila,
+    'phonenumber': phonenumber,
+  };
+}
+

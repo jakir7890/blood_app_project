@@ -5,12 +5,16 @@ import 'package:blood_app/screen/profilepage.dart';
 import 'package:blood_app/screen/signuppage.dart';
 import 'package:blood_app/screen/splashscreen.dart';
 import 'package:blood_app/screen/user_screen.dart';
+import 'package:blood_app/tezt.dart';
 import 'package:blood_app/widget/custromdrowe.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +29,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      // home: UserScreen(),
+      // home: Login(),
       initialRoute: '/',
        getPages: [
     GetPage(name: '/', page: () => Splashscreen()),
