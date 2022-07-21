@@ -5,7 +5,6 @@ import 'package:blood_app/screen/profilepage.dart';
 import 'package:blood_app/screen/signuppage.dart';
 import 'package:blood_app/screen/splashscreen.dart';
 import 'package:blood_app/screen/user_screen.dart';
-import 'package:blood_app/tezt.dart';
 import 'package:blood_app/widget/custromdrowe.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      // home: Login(),
+      // home: Homepage(),
       initialRoute: '/',
        getPages: [
     GetPage(name: '/', page: () => Splashscreen()),
@@ -37,10 +36,9 @@ class MyApp extends StatelessWidget {
     GetPage(name: '/', page: () => Homepage()),
     GetPage(name: '/', page: () => ProfilePage()),
     GetPage(name: '/', page: () => CustromDrower()),
-
     GetPage(name: '/', page: () => SignIn()),
     GetPage(name: '/', page: () => SignUp()),
-    GetPage(name: '/', page: () => ForgetPassScreen()),
+    GetPage(name: '/', page: () => ForgetPasswordPage()),
   ]
       
     );

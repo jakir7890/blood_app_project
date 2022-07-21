@@ -218,7 +218,7 @@ class _SignInState extends State<SignIn> {
               ),
               InkWell(
                 onTap: () {
-               Get.to(ForgetPassScreen());
+               Get.to(ForgetPasswordPage());
                 },
                 child: Padding(
                   padding: EdgeInsets.only(right: 200),

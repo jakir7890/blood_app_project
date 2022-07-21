@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 class TextFieldView extends StatelessWidget {
   
   const TextFieldView({
-    Key? key, required this.title, required this.controller, this.widget, 
+    Key? key, required this.title, required this.controller,
   }) : super(key: key);
 
   final String title;
  final controller;
- final  widget;
+ 
   
 
   @override

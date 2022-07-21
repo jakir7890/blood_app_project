@@ -1,6 +1,4 @@
-import 'package:blood_app/widget/custromdrowe.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -26,7 +24,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                        GestureDetector(
                           onTap: () {
-                            Get.to(CustromDrower());
+                            
                           },
                           child: Icon(Icons.arrow_back)),
                            SizedBox(width:20),
@@ -59,7 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFF660000)
                       ),
-                      child: Text('Donate Today',style: TextStyle(color: Colors.white),)
+                      child: Text('Donate Today')
                       ),
                        ElevatedButton(
                       onPressed: () {
@@ -70,9 +68,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       child: Row(
                         children: [
-                          Icon(Icons.edit,color: Colors.white),
+                          Icon(Icons.edit),
                           SizedBox(width: 5,),
-                          Text('Edit Profile',style: TextStyle(color: Colors.white),),
+                          Text('Edit Profile'),
                         ],
                       )
                       )
@@ -194,7 +192,11 @@ class ListOfProfile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(50),
                 image: DecorationImage(image: AssetImage(images!))
               ),
-      
+        // FittedBox(
+        //          alignment: Alignment.center,
+        // clipBehavior: Clip.none,
+        //         child: Image.asset(images!,fit: BoxFit.fill,),
+        //       ),
             ),
         SizedBox(width:20),
         Column(crossAxisAlignment: CrossAxisAlignment.start,

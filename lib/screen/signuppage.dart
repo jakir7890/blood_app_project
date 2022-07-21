@@ -117,9 +117,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ],
               ),
-              //   TextFieldView(
-              //   title: 'Email Address',
-              // ),
+             
               SizedBox(height: 10,),
                 TextFieldView(
                   controller: _phoneController,
@@ -186,7 +184,6 @@ class _SignUpState extends State<SignUp> {
           padding:  EdgeInsets.only(left: 25),
           child: Text('Select Area',style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
         ),
-        // SizedBox(height: 5,),
           Padding(
             padding:  EdgeInsets.all(16.0),
             child: Container(
@@ -294,7 +291,8 @@ class _SignUpState extends State<SignUp> {
                       phonenumber: int.parse(_phoneController.text),
                       currentupozila: _currentUpazelaController.text,
                       selectarea: _selectareaController.text,
-                      bloodgroup: _bloodgroupController.text
+                      bloodgroup: _bloodgroupController.text,
+                      email: _emailController.text, 
                     );
                     createUser(user);
                      Get.to(Homepage());
@@ -362,9 +360,7 @@ class _SignUpState extends State<SignUp> {
                                  ],
                                ),
                ),
-                             SizedBox(height: 20,),
-            
-            
+                  SizedBox(height: 20,),  
           ],
         ),
       ),
@@ -381,7 +377,7 @@ Future createUser(User user) async {
 }
 
 class User{
-  String id, name,
+  String id, name,email,
   selectarea,bloodgroup, 
   currentupozila;
   int phonenumber;
@@ -390,6 +386,7 @@ class User{
     {this.id = '',
     required this.name,
     required this.selectarea,
+    required this.email,
     required this.bloodgroup, 
     required this.currentupozila,
     required this.phonenumber}
@@ -398,10 +395,19 @@ class User{
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
-    // 'selectarea': selectarea,
-    // 'bloodgroup': bloodgroup,
+    'selectarea': selectarea,
+    'bloodgroup': bloodgroup,
     'currentupozila': currentupozila,
     'phonenumber': phonenumber,
+    'email': email,
   };
+
+  static User fromJson(Map<String, dynamic> json) => User(
+    name: json['name'], 
+    selectarea: json['selectarea'], 
+    email: json['email'], 
+    bloodgroup: json['bloodgroup'], 
+    currentupozila: json['currentupozila'], 
+    phonenumber: json['phonenumber']);
 }
 
