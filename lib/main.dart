@@ -5,6 +5,7 @@ import 'package:blood_app/screen/profilepage.dart';
 import 'package:blood_app/screen/signuppage.dart';
 import 'package:blood_app/screen/splashscreen.dart';
 import 'package:blood_app/screen/user_screen.dart';
+import 'package:blood_app/test.dart';
 import 'package:blood_app/widget/custromdrowe.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      // home: Homepage(),
+      // home: TestFile(),
       initialRoute: '/',
        getPages: [
     GetPage(name: '/', page: () => Splashscreen()),

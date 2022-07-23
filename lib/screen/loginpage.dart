@@ -97,7 +97,7 @@ class _SignInState extends State<SignIn> {
                                       color: Colors.blue),
                                 ),
                                 filled: true,
-                                fillColor: Colors.grey[200],
+                                fillColor: Colors.white,
                                 contentPadding: EdgeInsets.all(12),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20),

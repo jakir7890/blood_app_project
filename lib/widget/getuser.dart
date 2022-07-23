@@ -22,7 +22,7 @@ class GetUserName extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ResuableRow(title: 'Name:', value: '${data['name']}'.toUpperCase()),
                   ResuableRow(title: 'Email:', value: '${data['email']}'),

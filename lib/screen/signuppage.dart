@@ -18,11 +18,15 @@ class _SignUpState extends State<SignUp> {
 
    String? valueChoose1;
    String? valueChoose2;
+   String? valueChoose3;
   List listArea = [
     "Dhaka","Brahmanbaria","Chittagong","Uttara","Mirpur",
   ];
   List listGroup = [
     "A +","A -","B +","B -","AB +","AB -",
+  ];
+  List ofType = [
+    "Donner", " Blood Need"
   ];
    var _isVisible = false;
     TextEditingController _emailController = TextEditingController();
@@ -72,6 +76,52 @@ class _SignUpState extends State<SignUp> {
       
               Column(
                 children: [
+                  SizedBox(height: 10,),
+               Column(crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+          padding:  EdgeInsets.only(left: 25),
+          child: Text('Select Of Type',style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
+        ),
+          Padding(
+            padding:  EdgeInsets.all(16.0),
+            child: Container(
+              padding: EdgeInsets.only(left: 16,right: 16),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey,width: 1),
+                borderRadius: BorderRadius.circular(10)
+              ),
+              child: DropdownButton(
+               
+                icon: Icon(Icons.arrow_drop_down),
+                underline: SizedBox(),
+                style: TextStyle(
+                  fontSize: 15,fontWeight: FontWeight.bold,
+                  color: Colors.black
+                ),
+                iconSize: 30,
+                isExpanded: true,
+                value: valueChoose3,
+                 onChanged: (newValue){
+                  setState(() {
+                    valueChoose3 = newValue as String?;
+                  });
+                },
+                items: ofType.map((valueItem) {
+                  return DropdownMenuItem(
+                    value: valueItem,
+                    child: Text(valueItem)
+                    );
+                }
+                ).toList(), 
+               
+                ),
+            ),
+          ),
+                  
+                ],
+              ),
+              // SizedBox(height: 10,),
                   TextFieldView(
                     controller: _nameController,
                     title: 'Name',
@@ -401,6 +451,8 @@ class User{
     'phonenumber': phonenumber,
     'email': email,
   };
+
+  // select of type donner, blood need
 
   static User fromJson(Map<String, dynamic> json) => User(
     name: json['name'], 

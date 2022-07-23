@@ -1,97 +1,3 @@
-// import 'package:blood_app/const/color.dart';
-// import 'package:flutter/material.dart';
-
-// class ForgetPassScreen extends StatefulWidget {
-//   const ForgetPassScreen({Key? key}) : super(key: key);
-
-//   @override
-//   State<ForgetPassScreen> createState() => _ForgetPassScreenState();
-// }
-
-// class _ForgetPassScreenState extends State<ForgetPassScreen> {
-//    final emailController = TextEditingController();
-
-//   @override
-//   void dispose() {
-//     emailController.dispose();
-//     super.dispose();
-//   }
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(
-//           "Forgetten Password",
-//           style: TextStyle(color: Colors.black),
-//         ),
-//         backgroundColor: AppColor.kPrimaryColor,
-//         elevation: 0.0,
-//       ),
-//       body: Center(
-//         child: Padding(
-//           padding: const EdgeInsets.all(16.0),
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Spacer(),
-//               Text(
-//                 "Reset Password",
-//                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
-//               ),
-//               Text(
-//                   "Enter your email adress below and we'll send you a link to reset your password"),
-//               SizedBox(
-//                 height: 20,
-//               ),
-//               TextFormField(
-//                 decoration: InputDecoration(
-//                   focusedBorder: OutlineInputBorder(
-//                     borderRadius: BorderRadius.circular(25.0),
-//                     borderSide: BorderSide(
-//                       width: 2,
-//                       color: AppColor.buttonColor,
-//                     ),
-//                   ),
-//                   labelText: "E-Mail",
-//                   hintText: "Type your E-mail",
-//                   suffixIcon: IconTheme(
-//                       data: IconThemeData(color: AppColor.buttonColor),
-//                       child: Icon(
-//                         Icons.email,
-//                       )),
-//                   enabledBorder: OutlineInputBorder(
-//                     borderRadius: BorderRadius.circular(25.0),
-//                     borderSide: BorderSide(
-//                       color: AppColor.buttonColor,
-//                       width: 2.0,
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//               SizedBox(
-//                 height: 25,
-//               ),
-//               ElevatedButton(
-//                   style: ElevatedButton.styleFrom(
-//                     elevation: 8.0,
-//                     primary: AppColor.buttonColor,
-
-//                     minimumSize: Size.fromHeight(
-//                         50), // fromHeight use double.infinity as width and 40 is the height
-//                   ),
-//                   onPressed: () {},
-//                   child: Text(
-//                     "Send",
-//                     style: TextStyle(color: Colors.white, fontSize: 20),
-//                   )),
-//               Spacer()
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -106,7 +12,6 @@ class ForgetPasswordPage extends StatefulWidget {
 }
 
 class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
-  // final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
 
   @override
@@ -121,7 +26,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Reset Password'),
-        backgroundColor: Colors.deepOrange,
+        // backgroundColor: Colors.deepOrange,
         elevation: 0,
       ),
       body: Padding(
@@ -134,9 +39,12 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
               Padding(
                 padding:  EdgeInsets.symmetric(horizontal: 25),
                 child: Text('Enter your Email and we will sent you a password reset link',
+                style: TextStyle(
+                  fontSize: 15,fontWeight: FontWeight.bold
+                ),
                 textAlign: TextAlign.center,),
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 20,),
         
                Padding(
                        padding: EdgeInsets.symmetric(horizontal: 25),
@@ -147,15 +55,15 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                          decoration: InputDecoration(
                           // labelText: 'Email',
                            enabledBorder: OutlineInputBorder(
-                             borderSide: BorderSide(color: Colors.white),
+                             borderSide: BorderSide(color: Colors.black),
                              borderRadius: BorderRadius.circular(12)
                            ),
                            focusedBorder: OutlineInputBorder(
                              borderSide: BorderSide(color: Colors.deepPurple),
                              borderRadius: BorderRadius.circular(12)
                            ),
-                           hintText: 'Enter Your Email',
-                           fillColor: Colors.grey,
+                           hintText: 'Enter Your Email:',
+                           fillColor: Colors.white,
                            filled: true
                          ),
                        
@@ -165,8 +73,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
         
                        MaterialButton(
                          onPressed: passwordReset,
-                         child: Text('Reset Password',),
-                         color: Colors.deepPurple,
+                         child: Text('Reset Password',style: TextStyle(color: Colors.white),),
+                         color: Color(0xFF660000),
                          )
         
             ],
