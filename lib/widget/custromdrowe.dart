@@ -1,5 +1,5 @@
 
-import 'package:blood_app/screen/profilepage.dart';
+import 'package:blood_app/screen/BottomNav/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

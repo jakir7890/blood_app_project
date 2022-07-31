@@ -1,5 +1,6 @@
+import 'package:blood_app/screen/BottomNav/bottomNav_controller.dart';
+import 'package:blood_app/screen/BottomNav/home.dart';
 import 'package:blood_app/screen/forget_password.dart';
-import 'package:blood_app/screen/homapage.dart';
 import 'package:blood_app/screen/user_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -186,7 +187,7 @@ class _SignInState extends State<SignIn> {
                               
                               );
                               if(users!=null){
-                                 Get.to(Homepage());
+                                 Get.to(BottomNavBar());
                               }
                             }on FirebaseAuthException catch (e){
                               print(e.code);
