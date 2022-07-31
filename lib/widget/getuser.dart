@@ -31,8 +31,18 @@ class GetUserName extends StatelessWidget {
                             value: '${data['name']}'.toUpperCase(),
                             icon: Icons.favorite_border_outlined,
                             ),
-                        ResuableRow(title: 'Email:', value: '${data['email']}'),
                         ResuableRow(
+                          child: Positioned(
+                              left: -15,
+                              top: 10,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.green,
+                                child: Text('A+'),
+                              )
+                              ),
+                          title: 'Email:', value: '${data['email']}'),
+                        ResuableRow(
+                        
                             title: 'Phone Number: ',
                             value: '${data['phonenumber']}'.toString()),
                         ResuableRow(

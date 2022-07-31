@@ -127,7 +127,9 @@ Stream<List<User>> readusers() =>
 class ResuableRow extends StatelessWidget {
   final String title, value;
   final IconData? icon;
-  ResuableRow({Key? key, required this.title, required this.value, this.icon})
+  final Widget? child;
+
+  ResuableRow({Key? key, required this.title, required this.value, this.icon,this.child})
       : super(key: key);
 
   @override
@@ -139,20 +141,28 @@ class ResuableRow extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(
-                title,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+              Container(
+                  child: child,
+                 ),
+                 SizedBox(width: 5,),
+              Row(
+           children: [
+             Text(
+               title,
+               style: TextStyle(fontWeight: FontWeight.bold),
+             ),
               Text(value),
+           ],
+           ),
             ],
           ),
-
-          // SizedBox(width: 50,),
+            // SizedBox(width: 50,),
           GestureDetector(
               onTap: () {
                 Get.to(FavoriteScreen());
               },
-              child: Icon(icon))
+              child: Icon(icon)),
+              
         ],
       ),
     );
