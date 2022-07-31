@@ -58,57 +58,7 @@ class _HomepageState extends State<Homepage> {
           ))
         ],
       ),
-      // StreamBuilder<List<User>>(
-      //   stream: readusers(),
-      //   builder: (context, snapshot){
 
-      //     if(snapshot.hasData){
-      //       final users = snapshot.data!;
-      //       return ListView(
-      //         children: users.map(buildUser).toList(),
-      //       );
-      //     }else{
-      //       return Center(child:CircularProgressIndicator());
-      //     }
-
-      //   },
-      // )
-      // StreamBuilder(
-      //               stream: _users.snapshots(),
-      //               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-      //                 if(snapshot.hasData){
-      //                   return ListView.builder(
-      //                     itemCount: snapshot.data!.docs.length,
-      //                     itemBuilder: (context, index){
-      //                       final DocumentSnapshot documentSnapshot= snapshot.data!.docs[index];
-      //                       return  Card(
-      //                         margin: EdgeInsets.all(10),
-      //                         child:
-      //                         Column(
-      //                           children: [
-      //                             ResuableRow(title: 'Name : ', value: documentSnapshot['name']),
-      //                             ResuableRow(title: 'Email Address : ', value: documentSnapshot['email'].toString()),
-      //                             ResuableRow(title: 'Phone Number :', value: documentSnapshot['phonenumber'].toString()),
-      //                             ResuableRow(title: 'currentupozila :', value: documentSnapshot['currentupozila']),
-      //                           ],
-      //                         )
-      //                         // ListTile(
-      //                         //   title: Text(documentSnapshot['name']),
-      //                         //   subtitle: Text(documentSnapshot['email'].toString()),
-      //                         //   leading: Text(documentSnapshot['phonenumber'].toString()),
-
-      //                         // )
-
-      //                       );
-      //                     }
-      //                     );
-
-      //                 }
-      //                 else{
-      //                   return CircularProgressIndicator();
-      //                 }
-      //               },
-      //               ),
     );
   }
 
@@ -126,44 +76,56 @@ Stream<List<User>> readusers() =>
 
 class ResuableRow extends StatelessWidget {
   final String title, value;
-  final IconData? icon;
+  final String image;
+  //final IconData? icon;
   final Widget? child;
 
-  ResuableRow({Key? key, required this.title, required this.value, this.icon,this.child})
+  ResuableRow({Key? key, required this.title, required this.value, this.child, this.image='assets/images/blood.png'})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Stack(
+        clipBehavior: Clip.none,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                  child: child,
-                 ),
-                 SizedBox(width: 5,),
               Row(
-           children: [
-             Text(
-               title,
-               style: TextStyle(fontWeight: FontWeight.bold),
-             ),
-              Text(value),
-           ],
-           ),
+                children: [
+                  Container(
+                    child: child,
+                  ),
+                  SizedBox(width: 5,),
+                  Row(
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(value),
+                    ],
+                  ),
+                ],
+              ),
+              // SizedBox(width: 50,),
+
+
             ],
           ),
-            // SizedBox(width: 50,),
-          GestureDetector(
-              onTap: () {
-                Get.to(FavoriteScreen());
-              },
-              child: Icon(icon)),
-              
+          Positioned(
+            left: -25,
+            top: 60,
+            child: GestureDetector(
+                onTap: () {
+                  Get.to(FavoriteScreen());
+                },
+                child: Image.asset(image,width: 25,height: 25,)),
+          ),
         ],
+
       ),
     );
   }

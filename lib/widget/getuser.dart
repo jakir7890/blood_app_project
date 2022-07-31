@@ -29,7 +29,7 @@ class GetUserName extends StatelessWidget {
                         ResuableRow(
                             title: 'Name:',
                             value: '${data['name']}'.toUpperCase(),
-                            icon: Icons.favorite_border_outlined,
+                            image: 'assets/images/blood.png',
                             ),
                         ResuableRow(
                           child: Positioned(
