@@ -96,7 +96,7 @@ class ResuableRow extends StatefulWidget {
 }
 
 class _ResuableRowState extends State<ResuableRow> {
-  final hiveManageC = Get.put(HiveManageController(), permanent: true);
+  // final hiveManageC = Get.put(HiveManageController(), permanent: true);
 
   @override
   Widget build(BuildContext context) {

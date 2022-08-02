@@ -11,11 +11,11 @@ import 'package:path_provider/path_provider.dart';
 Future<void> main() async{
 
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  Directory directory=await getApplicationDocumentsDirectory();
-  Hive.init(directory.path);
-  Hive.registerAdapter<Blood>(BloodAdapter());
-  await Hive.openBox('blood');
+  // await Hive.initFlutter();
+  // Directory directory=await getApplicationDocumentsDirectory();
+  // Hive.init(directory.path);
+  // Hive.registerAdapter<Blood>(BloodAdapter());
+  // await Hive.openBox('blood');
   await Firebase.initializeApp();
   runApp( MyApp());
 }

@@ -63,7 +63,9 @@ class GetUserName extends StatelessWidget {
 
                     child: CircleAvatar(
                       backgroundColor: Colors.green,
-                      child: Text('A+'),
+                      child: Text('${data['bloodgroup']}',style: TextStyle(
+                        color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold
+                      ),),
                     )
                 ),
               ],
