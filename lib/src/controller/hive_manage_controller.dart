@@ -17,7 +17,9 @@ class HiveManageController extends GetxController {
           number: blood["number"],
           type: blood["type"],
           upazila: blood["upazila"]);
+       await bloodBox.put(blood["id"], data);
           
     }
+
   }
 }

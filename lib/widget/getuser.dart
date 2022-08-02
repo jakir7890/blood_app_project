@@ -16,33 +16,37 @@ class GetUserName extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.done) {
             Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
-            return Card(
+            return Stack(
+              clipBehavior: Clip.none,
+              children: [
+                SizedBox(width: 10,),
+                Card(
                   color: Colors.green.shade100,
                   shadowColor: Colors.red.shade100,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        
+
                         ResuableRow(
-                            title: 'Name:',
-                            value: '${data['name']}'.toUpperCase(),
-                            image: 'assets/images/blood.png',
-                            ),
+                          title: 'Name:',
+                          value: '${data['name']}'.toUpperCase(),
+                          icon: Icons.favorite_border,
+                        ),
+                         ResuableRow(
+                        //     child: Positioned(
+                        //         left: -40,
+                        //         top: 10,
+                        //         child: CircleAvatar(
+                        //           backgroundColor: Colors.green,
+                        //           child: Text('A+'),
+                        //         )
+                        //     ),
+                            title: 'Email:', value: '${data['email']}'),
                         ResuableRow(
-                          child: Positioned(
-                              left: -15,
-                              top: 10,
-                              child: CircleAvatar(
-                                backgroundColor: Colors.green,
-                                child: Text('A+'),
-                              )
-                              ),
-                          title: 'Email:', value: '${data['email']}'),
-                        ResuableRow(
-                        
+
                             title: 'Phone Number: ',
                             value: '${data['phonenumber']}'.toString()),
                         ResuableRow(
@@ -51,7 +55,19 @@ class GetUserName extends StatelessWidget {
                       ],
                     ),
                   ),
-                );
+                ),
+                SizedBox(width: 10,),
+                Positioned(
+                    left: -15,
+                    top: 75,
+
+                    child: CircleAvatar(
+                      backgroundColor: Colors.green,
+                      child: Text('A+'),
+                    )
+                ),
+              ],
+            );
           }
           return Text('Loading');
         });
