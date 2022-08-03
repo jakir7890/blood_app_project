@@ -1,4 +1,4 @@
-import 'package:blood_app/screen/BottomNav/bottomNav_controller.dart';
+
 import 'package:blood_app/screen/BottomNav/home.dart';
 import 'package:blood_app/screen/loginpage.dart';
 import 'package:blood_app/screen/user_screen.dart';
@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 
 class SignUp extends StatefulWidget {
   const SignUp({ Key? key }) : super(key: key);
@@ -34,10 +35,11 @@ class _SignUpState extends State<SignUp> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _nameController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
-  TextEditingController _currentUpazelaController = TextEditingController();
+  TextEditingController _currentUnionController = TextEditingController();
   TextEditingController _selectareaController = TextEditingController();
   TextEditingController _bloodgroupController = TextEditingController();
   TextEditingController _typeofController = TextEditingController();
+  TextEditingController _hospitalController = TextEditingController();
  FirebaseAuth auth = FirebaseAuth.instance;
 // sendUserDataDB() async{
 //   // final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -100,12 +102,16 @@ class _SignUpState extends State<SignUp> {
           padding:  EdgeInsets.only(left: 25),
           child: Text('Select Of Type',style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
         ),
+
+     
           Padding(
             padding:  EdgeInsets.all(16.0),
             child:  TextField(
                         controller: _typeofController,
                         readOnly: true,
+                        
                         decoration: InputDecoration(
+                          hintText: "Choose of type",
                           hintStyle: TextStyle(
                     fontSize: 12
                       ),
@@ -121,20 +127,29 @@ class _SignUpState extends State<SignUp> {
                         color: Colors.grey),
                   ),
                           // hintText: "choose your gender",
-                          suffixIcon: DropdownButton<String>(
-                            items: ofType.map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: new Text(value),
-                                onTap: (){
-                                  setState(() {
-                                    _typeofController.text = value;
-                                  });
-                                },
-                                );
-                            }).toList(), 
-                            onChanged: (_){}
-                            )
+                          suffixIcon: Padding(
+                            padding: EdgeInsets.only(left: 15,right: 10),
+                            child: DropdownButton<String>(
+                              underline: SizedBox(),
+                              icon: Icon(Icons.expand_more_outlined),
+                              // hint: Text('Choose of type',style: TextStyle(
+                              //   color:Colors.black,fontWeight: FontWeight.bold
+                              // ),textAlign: TextAlign.center,),
+                              
+                              items: ofType.map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: new Text(value),
+                                  onTap: (){
+                                    setState(() {
+                                      _typeofController.text = value;
+                                    });
+                                  },
+                                  );
+                              }).toList(), 
+                              onChanged: (_){}
+                              ),
+                          )
                         ),
                       ),
                       
@@ -144,6 +159,11 @@ class _SignUpState extends State<SignUp> {
                 ],
               ),
               // SizedBox(height: 10,),
+              TextFieldView(
+                controller: _hospitalController,
+                title: 'Hospital Name',
+              ),
+              SizedBox(height: 10,),
                   TextFieldView(
                     controller: _nameController,
                     title: 'Name',
@@ -179,7 +199,7 @@ class _SignUpState extends State<SignUp> {
                           fillColor: Colors.white,
                           contentPadding: EdgeInsets.all(12),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(
                                 width: 1,
                                 style: BorderStyle.solid,
@@ -196,7 +216,125 @@ class _SignUpState extends State<SignUp> {
                 title: 'Phone Number',
                 
               ),
+             
               SizedBox(height: 10,),
+               Column(crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+          padding:  EdgeInsets.only(left: 25),
+          child: Text('Select Area',style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
+        ),
+          Padding(
+            padding:  EdgeInsets.all(16.0),
+            child: TextField(
+                        controller: _selectareaController,
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintText: "Select Area",
+                          hintStyle: TextStyle(
+                    fontSize: 12
+                      ),
+                  border: OutlineInputBorder(),  
+                  filled: true,
+                  fillColor: Colors.white,
+                  contentPadding: EdgeInsets.all(12),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                        width: 1,
+                        style: BorderStyle.solid,
+                        color: Colors.grey),
+                  ),
+                          // hintText: "choose your gender",
+                          suffixIcon: Padding(
+                            padding:  EdgeInsets.only(left: 10,right: 10),
+                            child: DropdownButton<String>(
+                               underline: SizedBox(),
+                                icon: Icon(Icons.expand_more_outlined),
+                              items: listArea.map((String value) {
+                                return DropdownMenuItem<String>(
+                                  
+                                  value: value,
+                                  child: new Text(value),
+                                  onTap: (){
+                                    setState(() {
+                                      _selectareaController.text = value;
+                                    });
+                                  },
+                                  );
+                              }).toList(), 
+                              onChanged: (_){}
+                              ),
+                          )
+                        ),
+                      ),
+          ),
+                  
+                ],
+              ),
+
+              // SizedBox(height: 5,),
+              
+              Column(crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+          padding:  EdgeInsets.only(left: 25),
+          child: Text('Blood Group',style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
+        ),
+        // SizedBox(height: 5,),
+        Padding(
+            padding:  EdgeInsets.all(16.0),
+            child: TextField(
+                        controller: _bloodgroupController,
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          hintText: "Select Blood Group",
+                          hintStyle: TextStyle(
+                    fontSize: 12
+                      ),
+                  border: OutlineInputBorder(),  
+                  filled: true,
+                  fillColor: Colors.white,
+                  contentPadding: EdgeInsets.all(12),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                        width: 1,
+                        style: BorderStyle.solid,
+                        color: Colors.grey),
+                  ),
+                          // hintText: "choose your gender",
+                          suffixIcon: Padding(
+                            padding:  EdgeInsets.only(left: 10,right: 10),
+                            child: DropdownButton<String>(
+                               underline: SizedBox(),
+                                  icon: Icon(Icons.expand_more_outlined),
+                              items: listGroup.map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: new Text(value),
+                                  onTap: (){
+                                    setState(() {
+                                      _bloodgroupController.text = value;
+                                    });
+                                  },
+                                  );
+                              }).toList(), 
+                              onChanged: (_){}
+                              ),
+                          )
+                        ),
+                      ),
+          ),
+                  
+                ],
+              ),
+              // SizedBox(height: 10,),
+               TextFieldView(
+                controller: _currentUnionController,
+                title: 'Current Union',
+              ),
+               SizedBox(height: 10,),
              
                Column(crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
@@ -249,110 +387,6 @@ class _SignUpState extends State<SignUp> {
               ),
                  ],
                ),
-              SizedBox(height: 10,),
-               Column(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-          padding:  EdgeInsets.only(left: 25),
-          child: Text('Select Area',style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
-        ),
-          Padding(
-            padding:  EdgeInsets.all(16.0),
-            child: TextField(
-                        controller: _selectareaController,
-                        readOnly: true,
-                        decoration: InputDecoration(
-                          hintStyle: TextStyle(
-                    fontSize: 12
-                      ),
-                  border: OutlineInputBorder(),  
-                  filled: true,
-                  fillColor: Colors.white,
-                  contentPadding: EdgeInsets.all(12),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
-                        width: 1,
-                        style: BorderStyle.solid,
-                        color: Colors.grey),
-                  ),
-                          // hintText: "choose your gender",
-                          suffixIcon: DropdownButton<String>(
-                            items: listArea.map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: new Text(value),
-                                onTap: (){
-                                  setState(() {
-                                    _selectareaController.text = value;
-                                  });
-                                },
-                                );
-                            }).toList(), 
-                            onChanged: (_){}
-                            )
-                        ),
-                      ),
-          ),
-                  
-                ],
-              ),
-
-              // SizedBox(height: 5,),
-              
-              Column(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-          padding:  EdgeInsets.only(left: 25),
-          child: Text('Blood Group',style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
-        ),
-        // SizedBox(height: 5,),
-        Padding(
-            padding:  EdgeInsets.all(16.0),
-            child: TextField(
-                        controller: _bloodgroupController,
-                        readOnly: true,
-                        decoration: InputDecoration(
-                          hintStyle: TextStyle(
-                    fontSize: 12
-                      ),
-                  border: OutlineInputBorder(),  
-                  filled: true,
-                  fillColor: Colors.white,
-                  contentPadding: EdgeInsets.all(12),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
-                        width: 1,
-                        style: BorderStyle.solid,
-                        color: Colors.grey),
-                  ),
-                          // hintText: "choose your gender",
-                          suffixIcon: DropdownButton<String>(
-                            items: listGroup.map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: new Text(value),
-                                onTap: (){
-                                  setState(() {
-                                    _bloodgroupController.text = value;
-                                  });
-                                },
-                                );
-                            }).toList(), 
-                            onChanged: (_){}
-                            )
-                        ),
-                      ),
-          ),
-                  
-                ],
-              ),
-              // SizedBox(height: 10,),
-               TextFieldView(
-                controller: _currentUpazelaController,
-                title: 'Current Upazila',
-              ),
 
              SizedBox(height: 20,),
               Container(
@@ -368,10 +402,12 @@ class _SignUpState extends State<SignUp> {
                     final user= User(
                       name: _nameController.text,
                       phonenumber: int.parse(_phoneController.text),
-                      currentupozila: _currentUpazelaController.text,
+                      currentupozila: _currentUnionController.text,
                       selectarea: _selectareaController.text,
                       bloodgroup: _bloodgroupController.text,
                       email: _emailController.text, 
+                      hospitalname: _hospitalController.text,
+                      unoion: _currentUnionController.text
                     );
                     createUser(user);
                      Get.to(SignIn());
@@ -382,7 +418,7 @@ class _SignUpState extends State<SignUp> {
                               
                               );
                               if(users!=null){
-                                Get.to(SignIn());
+                                Get.to(Homepage());
 
                               }
                             }on FirebaseAuthException catch (e){
@@ -456,7 +492,7 @@ Future createUser(User user) async {
 }
 
 class User{
-  String id, name,email,
+  String id, name,email,hospitalname,unoion,
   selectarea,bloodgroup, 
   currentupozila;
   int phonenumber;
@@ -468,6 +504,8 @@ class User{
     required this.email,
     required this.bloodgroup, 
     required this.currentupozila,
+    required this.hospitalname,
+    required this.unoion,
     required this.phonenumber}
   );
 
@@ -479,6 +517,7 @@ class User{
     'currentupozila': currentupozila,
     'phonenumber': phonenumber,
     'email': email,
+    "hospitalname": hospitalname
   };
 
   // select of type donner, blood need
@@ -489,7 +528,7 @@ class User{
     email: json['email'], 
     bloodgroup: json['bloodgroup'], 
     currentupozila: json['currentupozila'], 
-    phonenumber: json['phonenumber']);
+    phonenumber: json['phonenumber'], hospitalname: json ['hospitalname'], unoion: json['union']);
 }
 
 

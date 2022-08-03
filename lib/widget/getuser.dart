@@ -32,7 +32,7 @@ class GetUserName extends StatelessWidget {
 
                         ResuableRow(
                           title: 'Name:',
-                          value: '${data['name']}'.toUpperCase(),
+                          value: '${data['name']}',
                           icon: Icons.favorite_border,
                         ),
                          ResuableRow(
@@ -44,7 +44,7 @@ class GetUserName extends StatelessWidget {
                         //           child: Text('A+'),
                         //         )
                         //     ),
-                            title: 'Email:', value: '${data['email']}'),
+                            title: 'Hospital Name:', value: '${data['hospitalname']}'),
                         ResuableRow(
 
                             title: 'Phone Number: ',
