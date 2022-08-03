@@ -1,4 +1,5 @@
 
+import 'package:blood_app/screen/BottomNav/bottomNav_controller.dart';
 import 'package:blood_app/screen/BottomNav/home.dart';
 import 'package:blood_app/screen/loginpage.dart';
 import 'package:blood_app/screen/user_screen.dart';
@@ -410,7 +411,7 @@ class _SignUpState extends State<SignUp> {
                       unoion: _currentUnionController.text
                     );
                     createUser(user);
-                     Get.to(SignIn());
+                     Get.to(BottomNavBar());
                   try{
                             final users= await auth.createUserWithEmailAndPassword(
                               email: _emailController.text, 
@@ -418,7 +419,7 @@ class _SignUpState extends State<SignUp> {
                               
                               );
                               if(users!=null){
-                                Get.to(Homepage());
+                                Get.to(BottomNavBar());
 
                               }
                             }on FirebaseAuthException catch (e){
