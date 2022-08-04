@@ -37,13 +37,10 @@ class GetUserName extends StatelessWidget {
                           icon: Icons.favorite_border,
                         ),
                         ResuableRow(
-<<<<<<< HEAD
                             title: 'Phone Number: ',
                             value: '${data['phonenumber']}'.toString()),
-                        ResuableRow(
-                            title: 'Union:',
-                            value: '${data['union']}'),
-=======
+                        
+
                             //     child: Positioned(
                             //         left: -40,
                             //         top: 10,
@@ -52,15 +49,13 @@ class GetUserName extends StatelessWidget {
                             //           child: Text('A+'),
                             //         )
                             //     ),
-                            title: 'Hospital Name:',
-                            value: '${data['hospitalname']}'),
-                        ResuableRow(
-                            title: 'Phone Number: ',
-                            value: '${data['phonenumber']}'.toString()),
-                        ResuableRow(
-                            title: 'Current Union:',
-                            value: '${data['currentupozila']}'),
->>>>>>> 3e0d19c73e3a7b2790eb36ebd3ff2d0a7464c94f
+                            ResuableRow(title: 'Hospital Name:', value: '${data['hospitalname']}'),
+                           
+                       ResuableRow(
+                            title: 'Union:',
+                            value: '${data['union']}'),
+                       
+
                       ],
                     ),
                   ),

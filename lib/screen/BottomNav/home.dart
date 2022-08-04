@@ -115,9 +115,7 @@ class _ResuableRowState extends State<ResuableRow> {
                 widget.title,
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              Container(width: 50.0,
-              
-               child: Text(widget.value)),
+              Text(widget.value),
               // SizedBox(width: 50,),
             ],
           ),
