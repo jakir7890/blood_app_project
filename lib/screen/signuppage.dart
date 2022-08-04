@@ -403,12 +403,11 @@ class _SignUpState extends State<SignUp> {
                     final user= User(
                       name: _nameController.text,
                       phonenumber: int.parse(_phoneController.text),
-                      currentupozila: _currentUnionController.text,
                       selectarea: _selectareaController.text,
                       bloodgroup: _bloodgroupController.text,
                       email: _emailController.text, 
                       hospitalname: _hospitalController.text,
-                      unoion: _currentUnionController.text
+                      union: _currentUnionController.text
                     );
                     createUser(user);
                      Get.to(BottomNavBar());
@@ -493,9 +492,9 @@ Future createUser(User user) async {
 }
 
 class User{
-  String id, name,email,hospitalname,unoion,
-  selectarea,bloodgroup, 
-  currentupozila;
+  String id, name,email,hospitalname,union,
+  selectarea,bloodgroup;
+  
   int phonenumber;
 
   User(
@@ -504,9 +503,8 @@ class User{
     required this.selectarea,
     required this.email,
     required this.bloodgroup, 
-    required this.currentupozila,
     required this.hospitalname,
-    required this.unoion,
+    required this.union,
     required this.phonenumber}
   );
 
@@ -515,10 +513,10 @@ class User{
     'name': name,
     'selectarea': selectarea,
     'bloodgroup': bloodgroup,
-    'currentupozila': currentupozila,
     'phonenumber': phonenumber,
     'email': email,
-    "hospitalname": hospitalname
+    "hospitalname": hospitalname,
+    "union": union
   };
 
   // select of type donner, blood need
@@ -528,8 +526,9 @@ class User{
     selectarea: json['selectarea'], 
     email: json['email'], 
     bloodgroup: json['bloodgroup'], 
-    currentupozila: json['currentupozila'], 
-    phonenumber: json['phonenumber'], hospitalname: json ['hospitalname'], unoion: json['union']);
+    phonenumber: json['phonenumber'], 
+    hospitalname: json ['hospitalname'], 
+    union: json['union']);
 }
 
 

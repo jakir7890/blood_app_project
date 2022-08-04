@@ -46,12 +46,11 @@ class GetUserName extends StatelessWidget {
                         //     ),
                             title: 'Hospital Name:', value: '${data['hospitalname']}'),
                         ResuableRow(
-
                             title: 'Phone Number: ',
                             value: '${data['phonenumber']}'.toString()),
                         ResuableRow(
-                            title: 'Current upozila:',
-                            value: '${data['currentupozila']}'.toUpperCase()),
+                            title: 'Union:',
+                            value: '${data['union']}'),
                       ],
                     ),
                   ),
