@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 38b72637de28b65213709cef53d2eb3f52a0abfa
 import 'package:blood_app/screen/BottomNav/bottomNav_controller.dart';
 import 'package:blood_app/screen/BottomNav/home.dart';
 import 'package:blood_app/screen/loginpage.dart';
@@ -379,6 +383,7 @@ class _SignUpState extends State<SignUp> {
                               });
                             },
                             icon: Icon(
+<<<<<<< HEAD
                               _isVisible
                                   ? Icons.visibility
                                   : Icons.visibility_off,
@@ -403,6 +408,90 @@ class _SignUpState extends State<SignUp> {
                               color: Colors.grey),
                         ),
                       )),
+=======
+                              _isVisible?Icons.visibility:
+                              Icons.visibility_off,
+                              color: Colors.grey,)
+                            ),
+                         
+                     
+                          hintStyle: TextStyle(
+                             fontSize: 12,fontWeight: FontWeight.bold),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1,
+                                style: BorderStyle.solid,
+                                color: Colors.blue),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: EdgeInsets.all(12),
+                          enabledBorder: OutlineInputBorder(
+                             borderRadius: BorderRadius.circular(10),
+                           
+                            borderSide: BorderSide(
+                                width: 1,
+                                style: BorderStyle.solid,
+                                color: Colors.grey),
+                          ),
+                        )),
+              ),
+                 ],
+               ),
+
+             SizedBox(height: 20,),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 60,
+                
+                padding: EdgeInsets.only(left: 20,right: 20),
+                child: ElevatedButton(
+                  onPressed: ()
+                  async 
+                  {
+                    // sendUserDataDB();
+                    final user= User(
+                      name: _nameController.text,
+                      phonenumber: int.parse(_phoneController.text),
+                      currentupozila: _currentUnionController.text,
+                      selectarea: _selectareaController.text,
+                      bloodgroup: _bloodgroupController.text,
+                      email: _emailController.text, 
+                      hospitalname: _hospitalController.text,
+                      unoion: _currentUnionController.text
+                    );
+                    createUser(user);
+                     Get.to(BottomNavBar());
+                  try{
+                            final users= await auth.createUserWithEmailAndPassword(
+                              email: _emailController.text, 
+                              password: _passwordController.text.toString().trim(),
+                              
+                              );
+                              if(users!=null){
+                                Get.to(BottomNavBar());
+
+                              }
+                            }on FirebaseAuthException catch (e){
+                              print(e.code);
+                            };
+                  },
+                    style: ElevatedButton.styleFrom(
+            primary: Color(0xFF660000),
+            padding: EdgeInsets.all(10),
+      
+            textStyle: TextStyle(
+                fontSize: 20,
+                
+            ),
+             shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10), 
+          ),
+           
+          ),
+                  child: Text('Sign Up ',style: TextStyle(
+                  color: Colors.white,fontSize: 25
+>>>>>>> 38b72637de28b65213709cef53d2eb3f52a0abfa
                 ),
               ],
             ),
