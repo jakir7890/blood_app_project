@@ -19,7 +19,9 @@ class GetUserName extends StatelessWidget {
             return Stack(
               clipBehavior: Clip.none,
               children: [
-                SizedBox(width: 10,),
+                SizedBox(
+                  width: 10,
+                ),
                 Card(
                   color: Colors.green.shade100,
                   shadowColor: Colors.red.shade100,
@@ -29,45 +31,48 @@ class GetUserName extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-
                         ResuableRow(
                           title: 'Name:',
                           value: '${data['name']}',
                           icon: Icons.favorite_border,
                         ),
-                         ResuableRow(
-                        //     child: Positioned(
-                        //         left: -40,
-                        //         top: 10,
-                        //         child: CircleAvatar(
-                        //           backgroundColor: Colors.green,
-                        //           child: Text('A+'),
-                        //         )
-                        //     ),
-                            title: 'Hospital Name:', value: '${data['hospitalname']}'),
                         ResuableRow(
-
+                            //     child: Positioned(
+                            //         left: -40,
+                            //         top: 10,
+                            //         child: CircleAvatar(
+                            //           backgroundColor: Colors.green,
+                            //           child: Text('A+'),
+                            //         )
+                            //     ),
+                            title: 'Hospital Name:',
+                            value: '${data['hospitalname']}'),
+                        ResuableRow(
                             title: 'Phone Number: ',
                             value: '${data['phonenumber']}'.toString()),
                         ResuableRow(
-                            title: 'Current upozila:',
-                            value: '${data['currentupozila']}'.toUpperCase()),
+                            title: 'Current Union:',
+                            value: '${data['currentupozila']}'),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(width: 10,),
+                SizedBox(
+                  width: 10,
+                ),
                 Positioned(
                     left: -15,
                     top: 75,
-
                     child: CircleAvatar(
                       backgroundColor: Colors.green,
-                      child: Text('${data['bloodgroup']}',style: TextStyle(
-                        color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold
-                      ),),
-                    )
-                ),
+                      child: Text(
+                        '${data['bloodgroup']}',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    )),
               ],
             );
           }

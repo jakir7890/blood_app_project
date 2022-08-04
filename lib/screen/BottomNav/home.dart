@@ -48,7 +48,7 @@ class _HomepageState extends State<Homepage> {
               return ListView.builder(
                 itemCount: docIDs.length,
                 itemBuilder: (context, index) {
-                  final item=docIDs[index];
+                  final item = docIDs[index];
                   return Stack(
                     children: [
                       ListTile(
@@ -75,8 +75,6 @@ class _HomepageState extends State<Homepage> {
 //       trailing: Text(users.email),
 //     );
 }
-
-
 
 class ResuableRow extends StatefulWidget {
   final String title, value;
@@ -117,26 +115,26 @@ class _ResuableRowState extends State<ResuableRow> {
                 widget.title,
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              Text(widget.value),
+              Container(width: 50.0,
+              
+               child: Text(widget.value)),
               // SizedBox(width: 50,),
             ],
           ),
           Align(
             alignment: Alignment.topRight,
             child: GestureDetector(
-              onTap: (){
-
-              },
-                //onTap: ()=>hiveManageC.manageBlood(blood: ),
-                child: Icon(widget.icon),
-                // child: ValueListenableBuilder(
-                //   builder:
-                //       (BuildContext context, dynamic value, Widget? child) {
-                //     return Container(child: Icon(Icons.favorite_border_outlined));
-                //   },
-                //   valueListenable: hiveManageC.bloodBox.listenable(),
-                //   // child: Icon(widget.icon)
-                // )
+              onTap: () {},
+              //onTap: ()=>hiveManageC.manageBlood(blood: ),
+              child: Icon(widget.icon),
+              // child: ValueListenableBuilder(
+              //   builder:
+              //       (BuildContext context, dynamic value, Widget? child) {
+              //     return Container(child: Icon(Icons.favorite_border_outlined));
+              //   },
+              //   valueListenable: hiveManageC.bloodBox.listenable(),
+              //   // child: Icon(widget.icon)
+              // )
             ),
           ),
         ],
