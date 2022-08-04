@@ -423,7 +423,7 @@ class _SignUpState extends State<SignUp> {
                               }
                             }on FirebaseAuthException catch (e){
                               print(e.code);
-                            };
+                            }
                   },
                     style: ElevatedButton.styleFrom(
             primary: Color(0xFF660000),
