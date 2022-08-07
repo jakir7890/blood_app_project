@@ -1,22 +1,35 @@
-import 'dart:io';
 
+import 'package:blood_app/screen/BottomNav/bottomNav_controller.dart';
+import 'package:blood_app/screen/user_screen.dart';
 import 'package:blood_app/src/app.dart';
-import 'package:blood_app/src/hive_model.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
-Future<void> main() async{
 
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Hive.initFlutter();
-  // Directory directory=await getApplicationDocumentsDirectory();
-  // Hive.init(directory.path);
-  // Hive.registerAdapter<Blood>(BloodAdapter());
-  // await Hive.openBox('blood');
   await Firebase.initializeApp();
+  try {
+
+  } catch (e) {
+    print('Init failed' + e.toString());
+  }
   runApp( MyApp());
+  _init();
 }
 
+
+_init() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  final token = prefs.getString("userID");
+  if (token != null) {
+    print('Token: $token');
+    Get.offAll(BottomNavBar());
+  } else {
+    Get.offAll(UserScreen());
+  }
+}

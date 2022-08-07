@@ -30,15 +30,11 @@ class GetUserName extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ResuableRow(
-                          title: 'Name:',
-                          value: '${data['name']}',
-                          icon: Icons.favorite_border,
-                        ),
+                      children: [                  
                         ResuableRow(
                             title: 'Phone Number: ',
-                            value: '${data['phonenumber']}'.toString()),
+                            value: '${data['phonenumber']}'.toString()
+                            ),
                         
 
                             //     child: Positioned(

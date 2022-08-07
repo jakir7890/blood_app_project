@@ -1,12 +1,11 @@
-import 'package:blood_app/screen/favorite_details.dart';
-import 'package:blood_app/screen/signuppage.dart';
-import 'package:blood_app/src/controller/hive_manage_controller.dart';
+
+// ignore_for_file: unused_local_variable
+
 import 'package:blood_app/widget/custromdrowe.dart';
 import 'package:blood_app/widget/getuser.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:hive_flutter/adapters.dart';
+
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -22,13 +21,13 @@ class _HomepageState extends State<Homepage> {
     await FirebaseFirestore.instance
         .collection('users')
         .get()
-        .then((snapshot) => snapshot.docs.forEach((Document) {
+        .then((snapshot) => snapshot.docs.forEach((document) {
               // print(Document.reference);
-              docIDs.add(Document.reference.id);
+              docIDs.add(document.reference.id);
             }));
   }
 
-  final CollectionReference _users =
+  final CollectionReference users =
       FirebaseFirestore.instance.collection('users');
 
   @override
