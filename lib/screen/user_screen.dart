@@ -1,4 +1,5 @@
 import 'package:blood_app/const/color.dart';
+import 'package:blood_app/screen/User_login/user_login.dart';
 import 'package:blood_app/screen/loginpage.dart';
 import 'package:blood_app/screen/signuppage.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,7 @@ class UserScreen extends StatelessWidget {
                         50), // fromHeight use double.infinity as width and 40 is the height
                   ),
                   onPressed: () {
-                    Get.to(SignUp());
+                    Get.to(UserLoginScreen());
                   },
                   child: Text(
                     "Sign Up",

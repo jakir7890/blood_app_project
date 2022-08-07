@@ -1,5 +1,6 @@
 import 'package:blood_app/screen/BottomNav/home.dart';
 import 'package:blood_app/screen/BottomNav/profile.dart';
+import 'package:blood_app/screen/User_login/user_login.dart';
 import 'package:blood_app/screen/forget_password.dart';
 import 'package:blood_app/screen/loginpage.dart';
 import 'package:blood_app/screen/signuppage.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      // home: TestFile(),
+      // home: UserLoginScreen(),
       initialRoute: '/',
        getPages: [
     GetPage(name: '/', page: () => Splashscreen()),
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
     GetPage(name: '/', page: () => ProfilePage()),
     GetPage(name: '/', page: () => CustromDrower()),
     GetPage(name: '/', page: () => SignIn()),
-    GetPage(name: '/', page: () => SignUp()),
+    // GetPage(name: '/', page: () => SignUp()),
     GetPage(name: '/', page: () => ForgetPasswordPage()),
   ]
       

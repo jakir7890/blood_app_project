@@ -19,7 +19,7 @@ class _HomepageState extends State<Homepage> {
 
   Future getDocid() async {
     await FirebaseFirestore.instance
-        .collection('users')
+        .collection('blood-donner')
         .get()
         .then((snapshot) => snapshot.docs.forEach((document) {
               // print(Document.reference);
@@ -28,7 +28,7 @@ class _HomepageState extends State<Homepage> {
   }
 
   final CollectionReference users =
-      FirebaseFirestore.instance.collection('users');
+      FirebaseFirestore.instance.collection('blood-donner');
 
   @override
   Widget build(BuildContext context) {

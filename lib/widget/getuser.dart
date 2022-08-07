@@ -9,7 +9,7 @@ class GetUserName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
+    CollectionReference users = FirebaseFirestore.instance.collection('blood-donner');
     return FutureBuilder<DocumentSnapshot>(
         future: users.doc(documentId).get(),
         builder: (context, snapshot) {
@@ -30,7 +30,11 @@ class GetUserName extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [                  
+                      children: [     
+                        ResuableRow(
+                            title: 'Name: ',
+                            value: '${data['name']}'
+                            ),             
                         ResuableRow(
                             title: 'Phone Number: ',
                             value: '${data['phonenumber']}'.toString()
