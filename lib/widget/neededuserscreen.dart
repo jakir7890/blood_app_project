@@ -2,14 +2,14 @@ import 'package:blood_app/screen/BottomNav/home.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class GetUserName extends StatelessWidget {
+class GetUserName2 extends StatelessWidget {
   final String documentId;
 
-  GetUserName({required this.documentId});
+  GetUserName2({required this.documentId});
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('blood-donner');
+    CollectionReference users = FirebaseFirestore.instance.collection('blood-needed');
     return FutureBuilder<DocumentSnapshot>(
         future: users.doc(documentId).get(),
         builder: (context, snapshot) {
@@ -39,7 +39,9 @@ class GetUserName extends StatelessWidget {
                             title: 'Phone Number: ',
                             value: '${data['phonenumber']}'.toString()
                             ),
-                        
+                         ResuableRow(
+                            title: 'Email:',
+                            value: '${data['email']}'),
 
                             //     child: Positioned(
                             //         left: -40,
@@ -49,11 +51,11 @@ class GetUserName extends StatelessWidget {
                             //           child: Text('A+'),
                             //         )
                             //     ),
-                            ResuableRow(title: 'Hospital Name:', value: '${data['hospitalname']}'),
+                            // ResuableRow(title: 'Hospital Name:', value: '${data['hospitalname']}'),
                            
                        ResuableRow(
                             title: 'District:',
-                            value: '${data['union']}'),
+                            value: '${data['selectarea']}'),
                        
 
                       ],

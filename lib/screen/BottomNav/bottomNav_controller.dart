@@ -47,7 +47,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           destinations: [
             NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
             NavigationDestination(
-                icon: Icon(Icons.bloodtype), label: ' Blood Bank'),
+                icon: Icon(Icons.bloodtype), label: ' Blood Needed'),
             NavigationDestination(
                 icon: Icon(Icons.chat_bubble_outline), label: 'Chats'),
             NavigationDestination(

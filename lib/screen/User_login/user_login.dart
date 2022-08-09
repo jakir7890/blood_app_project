@@ -25,6 +25,7 @@ class _UserLoginScreenState extends State<UserLoginScreen>
         title: Text('Sign Up'),
         centerTitle: true,
         bottom: TabBar(
+          padding: EdgeInsets.only(left: 15,right: 15),
           controller: _tabController,
           indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(50), color: Colors.green),
@@ -39,8 +40,11 @@ class _UserLoginScreenState extends State<UserLoginScreen>
           ],
         ),
       ),
-      body: TabBarView(
-          controller: _tabController, children: [BloodDonner(), BloodNeeded()]),
+      body: Padding(
+        padding:  EdgeInsets.only(left: 10,right: 10),
+        child: TabBarView(
+            controller: _tabController, children: [BloodDonner(), BloodNeeded()]),
+      ),
     );
   }
 }

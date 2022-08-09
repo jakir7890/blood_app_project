@@ -1,8 +1,8 @@
 // ignore_for_file: unnecessary_null_comparison
 
+import 'package:blood_app/screen/BottomNav/blood_bank.dart';
 import 'package:blood_app/screen/BottomNav/bottomNav_controller.dart';
-import 'package:blood_app/screen/loginpage.dart';
-import 'package:blood_app/screen/user_screen.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -40,11 +40,11 @@ class _BloodNeededState extends State<BloodNeeded> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-  TextEditingController currentUnionController = TextEditingController();
-  TextEditingController selectareaController = TextEditingController();
+  // TextEditingController currentUnionController = TextEditingController();
+  TextEditingController selectdistrictController = TextEditingController();
   TextEditingController bloodgroupController = TextEditingController();
   // TextEditingController typeofController = TextEditingController();
-  TextEditingController hospitalController = TextEditingController();
+  // TextEditingController hospitalController = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
 // sendUserDataDB() async{
 //   // final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -339,7 +339,7 @@ class _BloodNeededState extends State<BloodNeeded> {
             Padding(
               padding: EdgeInsets.all(16.0),
               child: TextField(
-                controller: selectareaController,
+                controller: selectdistrictController,
                 decoration: InputDecoration(
                   hintStyle: TextStyle(fontSize: 12),
                   border: OutlineInputBorder(),
@@ -509,12 +509,13 @@ class _BloodNeededState extends State<BloodNeeded> {
                     final user = User(
                         name: nameController.text,
                         phonenumber: int.parse(phoneController.text),
-                        selectarea: selectareaController.text,
+                        selectdistrict: selectdistrictController.text,
                         bloodgroup: bloodgroupController.text,
                         email: emailController.text,
-                        hospitalname: hospitalController.text,
-                        union: currentUnionController.text);
-                    createUser(user);
+                        // hospitalname: hospitalController.text,
+                        // union: currentUnionController.text
+                        );
+                    neededUser(user);
                     Get.to(BottomNavBar());
                     try {
                       final users = await auth.createUserWithEmailAndPassword(
@@ -588,7 +589,7 @@ class _BloodNeededState extends State<BloodNeeded> {
   }
 }
 
-Future createUser(User user) async {
+Future neededUser(User user) async {
   final docUser = FirebaseFirestore.instance.collection('blood-needed').doc();
   user.id = docUser.id;
   final json = user.toJson();
@@ -596,40 +597,45 @@ Future createUser(User user) async {
 }
 
 class User {
-  String id, name, email, hospitalname, union, selectarea, bloodgroup;
+  String id, name, email, 
+  // hospitalname,
+  //  union,
+    selectdistrict, bloodgroup;
   int phonenumber;
 
   User(
       {this.id = '',
       required this.name,
-      required this.selectarea,
+      required this.selectdistrict,
       required this.email,
       required this.bloodgroup,
-      required this.hospitalname,
-      required this.union,
-      required this.phonenumber});
+      // required this.hospitalname,
+      // required this.union,
+      required this.phonenumber
+      });
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
-        'selectarea': selectarea,
+        'selectarea': selectdistrict,
         'bloodgroup': bloodgroup,
         'phonenumber': phonenumber,
         'email': email,
-        "hospitalname": hospitalname,
-        "union": union
+        // "hospitalname": hospitalname,
+        // "union": union
       };
 
   // select of type donner, blood need
 
   static User fromJson(Map<String, dynamic> json) => User(
       name: json['name'],
-      selectarea: json['selectarea'],
+      selectdistrict: json['selectarea'],
       email: json['email'],
       bloodgroup: json['bloodgroup'],
       phonenumber: json['phonenumber'],
-      hospitalname: json['hospitalname'],
-      union: json['union']);
+      // hospitalname: json['hospitalname'],
+      // union: json['union']
+      );
 }
 
 
